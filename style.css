@@ -1,0 +1,67 @@
+/* custom nav styles */
+header.navbar {
+  height: 60px;
+  width: 100%;
+  padding: 10px 30px;
+  margin-bottom: 0px;
+}
+
+/* custom home page styles */
+div.home {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+div.home div.card {
+  width: 300px;
+  height: 500px;
+  margin: 10px;
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+div.home div.card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 16px 32px 0 rgba(62, 57, 107, 0.28), 0 0 0 transparent;
+}
+
+div.home div.card .card-image img {
+  height: 400px;
+  width: 300px;
+}
+
+/* custom movie page styles */
+div.movie {
+  display: flex;
+  justify-content: center;
+}
+div.movie div.card {
+  width: 700px;
+  border: none;
+}
+
+div.movie div.card-title,
+div.movie div.card-subtitle,
+div.movie div.chips {
+  padding: 5px;
+}
+
+div.movie div.card .card-image img {
+  width: 95%;
+  margin: auto;
+}
+
+div.movie figure.avatar.avatar-xl.tooltip {
+  margin: 5px;
+}
+
+div.movie figure.avatar.avatar-xl.tooltip,
+div.movie figure.avatar.avatar-xl.tooltip img {
+  width: 64px;
+  height: 64px;
+}
