@@ -1,5 +1,6 @@
 const withCSS = require('@zeit/next-css');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const stringify = require('json-stringify');
 
 module.exports = withCSS({
   webpack(config) {
@@ -7,6 +8,21 @@ module.exports = withCSS({
     config.node = {
       fs: 'empty',
     };
+
+    if (config.module.rules[2]) {
+      config.module.rules[2]['use'] = [
+        config.module.rules[2]['use'][0],
+        config.module.rules[2]['use'][1],
+        config.module.rules[2]['use'][2],
+        {
+          loader: 'css-purify-webpack-loader',
+          options: {
+            includes: ['./pages/*.js', './components/*.js'],
+            when: true,
+          },
+        },
+      ];
+    }
 
     config.plugins.push(
       new WorkboxPlugin.GenerateSW({
@@ -39,6 +55,9 @@ module.exports = withCSS({
         ],
       })
     );
+
+    // console.log(stringify(config, null, 2));
+    console.log(config.name);
 
     return config;
   },
