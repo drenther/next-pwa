@@ -25,11 +25,14 @@ const Movie = ({ title, poster_path, rating, overview, genres, cast }) => (
         <div className="card-subtitle">{overview}</div>
         <div className="card-title h4">Cast</div>
         <div className="cast">
-          {cast.map(({ credit_id, profile_path, name }) => (
-            <figure key={credit_id} className="avatar avatar-xl tooltip" data-tooltip={name}>
-              <img src={getImageSrc(profile_path, 92)} alt={name} />
-            </figure>
-          ))}
+          {cast.map(
+            ({ credit_id, profile_path, name }) =>
+              profile_path ? (
+                <figure key={credit_id} className="avatar avatar-xl tooltip" data-tooltip={name}>
+                  <img src={getImageSrc(profile_path, 92)} alt={name} />
+                </figure>
+              ) : null
+          )}
         </div>
       </div>
       <div className="card-footer btn-group btn-group-block">

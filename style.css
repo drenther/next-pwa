@@ -62,6 +62,7 @@ div.movie figure.avatar.avatar-xl.tooltip {
 
 div.movie figure.avatar.avatar-xl.tooltip,
 div.movie figure.avatar.avatar-xl.tooltip img {
-  width: 64px;
-  height: 64px;
+  width: 46px;
+  height: 69px;
+  border-radius: 10px;
 }
