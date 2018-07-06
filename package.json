@@ -1,5 +1,5 @@
 {
-  "name": "create-next-example-app",
+  "name": "next-pwa",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
