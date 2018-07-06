@@ -13,7 +13,7 @@ class Movie extends Component {
     const { id, poster_path, title, overview } = this.props;
     return (
       <Link as={`/movie/${id}`} href={`/movie?id=${id}`} key={id}>
-        <div className="card" key={id} onMouseOver={this.prefetchMoviePage}>
+        <div className="card" key={id} onMouseEnter={this.prefetchMoviePage}>
           <div className="card-image">
             <img src={getImageSrc(poster_path, 342)} className="img-responsive" />
           </div>

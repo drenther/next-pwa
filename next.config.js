@@ -1,6 +1,6 @@
 const withCSS = require('@zeit/next-css');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const stringify = require('json-stringify');
+// const stringify = require('json-stringify');
 
 module.exports = withCSS({
   webpack(config) {
@@ -9,19 +9,13 @@ module.exports = withCSS({
       fs: 'empty',
     };
 
-    if (config.module.rules[2]) {
-      config.module.rules[2]['use'] = [
-        config.module.rules[2]['use'][0],
-        config.module.rules[2]['use'][1],
-        config.module.rules[2]['use'][2],
-        {
-          loader: 'css-purify-webpack-loader',
-          options: {
-            includes: ['./pages/*.js', './components/*.js'],
-            when: true,
-          },
+    if (config.name === 'client') {
+      config.module.rules[config.module.rules.length - 1].use.push({
+        loader: 'css-purify-webpack-loader',
+        options: {
+          includes: ['./pages/*.js', './components/*.js'],
         },
-      ];
+      });
     }
 
     config.plugins.push(
@@ -57,7 +51,7 @@ module.exports = withCSS({
     );
 
     // console.log(stringify(config, null, 2));
-    console.log(config.name);
+    // console.log(config.name);
 
     return config;
   },
