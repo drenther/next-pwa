@@ -27,6 +27,20 @@ module.exports = withCSS({
       skipWaiting: true,
       runtimeCaching: [
         {
+          urlPattern: '/',
+          handler: 'networkFirst',
+          options: {
+            cacheName: 'html-cache',
+          },
+        },
+        {
+          urlPattern: /css/,
+          handler: 'networkFirst',
+          options: {
+            cacheName: 'css-cache',
+          },
+        },
+        {
           urlPattern: new RegExp('^https://api.themoviedb.org/3/movie'),
           handler: 'staleWhileRevalidate',
           options: {
