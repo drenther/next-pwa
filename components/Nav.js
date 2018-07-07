@@ -3,6 +3,8 @@ import Link from 'next/link';
 import '../spectre.css';
 import '../style.css';
 
+import OfflineSupport from '../components/OfflineSupport';
+
 const Nav = () => (
   <header className="navbar">
     <section className="navbar-section">
@@ -10,6 +12,7 @@ const Nav = () => (
         <button className="btn btn-link text-bold">Home</button>
       </Link>
     </section>
+    <OfflineSupport />
   </header>
 );
 

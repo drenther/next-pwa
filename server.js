@@ -1,3 +1,5 @@
+const { join } = require('path');
+const { parse } = require('url');
 const express = require('express');
 const next = require('next');
 const cache = require('lru-cache'); // for using least-recently-used based caching
@@ -24,7 +26,23 @@ app.prepare().then(() => {
     renderAndCache(req, res, '/movie', queryParams);
   });
 
-  server.get('*', (req, res) => handle(req, res));
+  server.get('*', (req, res) => {
+    const parsedUrl = parse(req.url, true);
+    const { pathname } = parsedUrl;
+
+    console.log(pathname);
+
+    if (
+      pathname.includes('precache-manifest') ||
+      pathname.includes('service-worker')
+    ) {
+      const filename = pathname.split('/').reverse()[0];
+      const filePath = join(__dirname, '.next', 'server', filename);
+      app.serveStatic(req, res, filePath);
+    } else {
+      handle(req, res, parsedUrl);
+    }
+  });
 
   server.listen(PORT, err => {
     if (err) throw err;

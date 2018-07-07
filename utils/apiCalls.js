@@ -14,15 +14,14 @@ const fetchWithErrorHandling = async url => {
 };
 
 export const getMovieDetails = async id =>
-  fetchWithErrorHandling(`${BASE_URI}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=credits`);
+  fetchWithErrorHandling(
+    `${BASE_URI}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=credits`
+  );
 
 export const getUpcomingMovies = async () =>
-  fetchWithErrorHandling(`${BASE_URI}/upcoming?api_key=${API_KEY}&language=en-US&page=1`);
+  fetchWithErrorHandling(
+    `${BASE_URI}/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+  );
 
-// export const getMovieDetails = async id =>
-//   await (await fetch(`${BASE_URI}/${id}?api_key=${API_KEY}&language=en-US&append_to_response=credits`)).json();
-
-// export const getUpcomingMovies = async () =>
-//   await (await fetch(`${BASE_URI}/upcoming?api_key=${API_KEY}&language=en-US&page=1`)).json();
-
-export const getImageSrc = (path, size) => `${IMAGE_BASE_URI}/${size ? `w${size}` : 'original'}${path}`;
+export const getImageSrc = (path, size) =>
+  `${IMAGE_BASE_URI}/${size ? `w${size}` : 'original'}${path}`;

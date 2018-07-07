@@ -5,7 +5,7 @@ class OfflineSupport extends PureComponent {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .register('./service-worker.js')
-        .then(reg => console.log('service worker registered.'))
+        .then(() => console.log('service worker registered.'))
         .catch(err => console.warn('service worker registration failed', err));
     }
   }
