@@ -4,7 +4,7 @@ const express = require('express');
 const next = require('next');
 const cache = require('lru-cache'); // for using least-recently-used based caching
 
-const PORT = 8000;
+const PORT = 5995;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -27,13 +27,16 @@ app.prepare().then(() => {
   });
 
   server.get('*', (req, res) => {
-    if (req.url.startsWith('/sw')) {
-      const filePath = join(__dirname, 'static', 'workbox', req.url);
+    const parsedUrl = parse(req.url, true);
+    const { pathname } = parsedUrl;
+
+    if (pathname === '/service-worker.js') {
+      const filePath = join(__dirname, '.next', pathname);
       app.serveStatic(req, res, filePath);
-    } else if (req.url.startsWith('static/workbox/')) {
-      app.serveStatic(req, res, join(__dirname, req.url));
+      // } else if (req.url.startsWith('static/workbox/')) {
+      //   app.serveStatic(req, res, join(__dirname, req.url));
     } else {
-      handle(req, res, req.url);
+      handle(req, res, parsedUrl);
     }
   });
 

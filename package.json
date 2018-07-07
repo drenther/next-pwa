@@ -18,6 +18,7 @@
     "css-purify-webpack-loader": "^1.0.1",
     "json-stringify": "^1.0.0",
     "next-workbox-webpack-plugin": "^1.1.0",
+    "sw-precache-webpack-plugin": "0.11.3",
     "workbox-webpack-plugin": "^3.3.1"
   }
 }
