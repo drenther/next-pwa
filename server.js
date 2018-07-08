@@ -30,7 +30,6 @@ app.prepare().then(() => {
       const filePath = join(__dirname, 'static', 'workbox', 'sw.js');
       app.serveStatic(req, res, filePath);
     } else if (req.url.startsWith('static/workbox/')) {
-      console.log(req.url);
       app.serveStatic(req, res, join(__dirname, req.url));
     } else {
       handle(req, res, req.url);

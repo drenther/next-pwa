@@ -51,7 +51,6 @@ const Movie = ({ title, poster_path, rating, overview, genres, cast, error }) =>
 
 Movie.getInitialProps = async ({ query: { id } }) => {
   const res = await getMovieDetails(id);
-  console.log({ res });
   if (res.error || !res.original_title) return res;
 
   const {

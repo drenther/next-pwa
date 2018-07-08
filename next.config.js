@@ -1,8 +1,7 @@
 const withCSS = require('@zeit/next-css');
 const NextWorkboxPlugin = require('next-workbox-webpack-plugin');
-const { join } = require('path');
-
-const workboxPath = join(__dirname, '.next');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const path = require('path');
 
 module.exports = withCSS({
   webpack(config, { isServer, buildId, dev }) {
@@ -63,6 +62,31 @@ module.exports = withCSS({
         new NextWorkboxPlugin({
           buildId,
           ...workboxOptions,
+        }),
+        new WebpackPwaManifest({
+          filename: 'static/manifest.json',
+          name: 'Next PWA',
+          short_name: 'Next-PWA',
+          description: 'A Movie browsing PWA using Next.js and Google Workbox',
+          background_color: '#ffffff',
+          display: 'standalone',
+          orientation: 'portrait',
+          fingerprints: false,
+          inject: false,
+          start_url: '.',
+          ios: {
+            'apple-mobile-web-app-title': 'Next-PWA',
+            'apple-mobile-web-app-status-bar-style': '#5755d9',
+          },
+          icons: [
+            {
+              src: path.resolve('static/favicon.ico'),
+              sizes: [96, 128, 192, 256, 384, 512],
+              destination: 'static',
+            },
+          ],
+          publicPath: '_next',
+          includeDirectory: true,
         })
       );
     }
