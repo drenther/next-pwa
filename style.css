@@ -6,6 +6,36 @@ header.navbar {
   margin-bottom: 0px;
 }
 
+div.header {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background: #ffffff;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+}
+
+div#loader-bar {
+  width: 100%;
+  height: 4px;
+  visibility: hidden;
+  transition: all 0.1s linear;
+  animation: loading 0.5s ease-in-out infinite alternate;
+}
+div#loader-bar.loading-show {
+  visibility: visible;
+}
+
+@keyframes loading {
+  from {
+    background: #5755d9;
+  }
+  to {
+    background: #ffffff;
+  }
+}
+
 /* custom home page styles */
 div.home {
   padding: 10px;
@@ -14,6 +44,7 @@ div.home {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: 80px;
 }
 
 div.home div.card {
@@ -39,6 +70,7 @@ div.home div.card .card-image img {
 div.movie {
   display: flex;
   justify-content: center;
+  margin-top: 80px;
 }
 div.movie div.card {
   width: 700px;

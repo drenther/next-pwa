@@ -5,6 +5,9 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
+  "browserslist": [
+    "last 2 version"
+  ],
   "dependencies": {
     "@zeit/next-css": "^0.2.0",
     "express": "^4.16.3",
