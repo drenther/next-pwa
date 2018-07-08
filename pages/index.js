@@ -1,7 +1,11 @@
 import Movie from '../components/Movie';
+import Oops from '../components/Oops';
+
 import { getUpcomingMovies } from '../utils/apiCalls';
 
-const Home = ({ movies }) => <div className="home">{movies.map(props => <Movie {...props} key={props.id} />)}</div>;
+const Home = ({ movies, error }) => (
+  <div className="home">{error ? <Oops /> : movies.map(props => <Movie {...props} key={props.id} />)}</div>
+);
 
 Home.getInitialProps = async () => {
   const res = await getUpcomingMovies();

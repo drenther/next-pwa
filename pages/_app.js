@@ -2,6 +2,7 @@ import React from 'react';
 import App, { Container } from 'next/app';
 
 import Header from '../components/Header';
+import OfflineSupport from '../components/OfflineSupport';
 
 class CustomApp extends App {
   render() {
@@ -9,6 +10,7 @@ class CustomApp extends App {
     return (
       <Container>
         <Header />
+        <OfflineSupport />
         <Component {...pageProps} />
       </Container>
     );

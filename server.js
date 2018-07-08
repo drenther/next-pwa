@@ -1,5 +1,4 @@
 const { join } = require('path');
-const { parse } = require('url');
 const express = require('express');
 const next = require('next');
 const cache = require('lru-cache'); // for using least-recently-used based caching
@@ -10,8 +9,8 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const ssrCache = new cache({
-  max: 50, // not more than 50 results will be cached
-  maxAge: 1000 * 60 * 60, // an hour
+  max: 20, // not more than 20 results will be cached
+  maxAge: 1000 * 60 * 5, // 5 mins
 });
 
 app.prepare().then(() => {
@@ -27,10 +26,11 @@ app.prepare().then(() => {
   });
 
   server.get('*', (req, res) => {
-    if (req.url.startsWith('/sw')) {
-      const filePath = join(__dirname, 'static', 'workbox', req.url);
+    if (req.url.includes('/sw')) {
+      const filePath = join(__dirname, 'static', 'workbox', 'sw.js');
       app.serveStatic(req, res, filePath);
     } else if (req.url.startsWith('static/workbox/')) {
+      console.log(req.url);
       app.serveStatic(req, res, join(__dirname, req.url));
     } else {
       handle(req, res, req.url);

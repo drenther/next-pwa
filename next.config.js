@@ -1,8 +1,6 @@
 const withCSS = require('@zeit/next-css');
 const NextWorkboxPlugin = require('next-workbox-webpack-plugin');
-// const WorkboxPlugin = require('workbox-webpack-plugin');
 const { join } = require('path');
-// const stringify = require('json-stringify');
 
 const workboxPath = join(__dirname, '.next');
 
@@ -25,6 +23,10 @@ module.exports = withCSS({
     const workboxOptions = {
       clientsClaim: true,
       skipWaiting: true,
+      globPatterns: ['.next/static/*', '.next/static/commons/*'],
+      modifyUrlPrefix: {
+        '.next': '/_next',
+      },
       runtimeCaching: [
         {
           urlPattern: '/',
@@ -34,19 +36,12 @@ module.exports = withCSS({
           },
         },
         {
-          urlPattern: /css/,
-          handler: 'networkFirst',
-          options: {
-            cacheName: 'css-cache',
-          },
-        },
-        {
           urlPattern: new RegExp('^https://api.themoviedb.org/3/movie'),
           handler: 'staleWhileRevalidate',
           options: {
             cacheName: 'api-cache',
             cacheableResponse: {
-              statuses: [0, 200],
+              statuses: [200],
             },
           },
         },
@@ -71,9 +66,6 @@ module.exports = withCSS({
         })
       );
     }
-
-    // console.log(stringify(config, null, 2));
-    // console.log(config.name);
 
     return config;
   },
