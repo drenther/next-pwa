@@ -73,7 +73,7 @@ module.exports = withCSS({
           orientation: 'portrait',
           fingerprints: false,
           inject: false,
-          start_url: '.',
+          start_url: '/',
           ios: {
             'apple-mobile-web-app-title': 'Next-PWA',
             'apple-mobile-web-app-status-bar-style': '#5755d9',
@@ -82,11 +82,11 @@ module.exports = withCSS({
             {
               src: path.resolve('static/favicon.ico'),
               sizes: [96, 128, 192, 256, 384, 512],
-              destination: 'static',
+              destination: '/static',
             },
           ],
-          publicPath: '_next',
           includeDirectory: true,
+          publicPath: '..',
         })
       );
     }

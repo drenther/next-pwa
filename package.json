@@ -15,6 +15,7 @@
     "react-dom": "16.4.1"
   },
   "devDependencies": {
+    "autoprefixer": "^8.6.5",
     "css-purify-webpack-loader": "^1.0.1",
     "next-workbox-webpack-plugin": "^1.1.0",
     "webpack-pwa-manifest": "^3.6.2"
