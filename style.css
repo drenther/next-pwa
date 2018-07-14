@@ -63,7 +63,8 @@ div.home div.card:hover {
 
 div.home div.card .card-image img {
   height: 400px;
-  width: 300px;
+  width: 266.66666666667px;
+  margin: auto;
 }
 
 /* custom movie page styles */
@@ -97,4 +98,13 @@ div.movie figure.avatar.avatar-xl.tooltip img {
   width: 46px;
   height: 69px;
   border-radius: 10px;
+}
+
+img {
+  opacity: 1;
+  transition: opacity 0.25s ease-in;
+}
+
+img.loading-img {
+  opacity: 0.5;
 }

@@ -1,10 +1,17 @@
+import Head from 'next/head';
+
 import Movie from '../components/Movie';
 import Oops from '../components/Oops';
 
 import { getUpcomingMovies } from '../utils/apiCalls';
 
 const Home = ({ movies, error }) => (
-  <div className="home">{error ? <Oops /> : movies.map(props => <Movie {...props} key={props.id} />)}</div>
+  <div className="home">
+    <Head>
+      <title>Index | Movies PWA</title>
+    </Head>
+    {error ? <Oops /> : movies.map(props => <Movie {...props} key={props.id} />)}
+  </div>
 );
 
 Home.getInitialProps = async () => {

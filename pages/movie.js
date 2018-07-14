@@ -1,14 +1,21 @@
 import Link from 'next/link';
+import Head from 'next/head';
 
 import Oops from '../components/Oops';
+import Image from '../components/Image';
 
 import { getMovieDetails, getImageSrc } from '../utils/apiCalls';
 
 const Movie = ({ title, poster_path, rating, overview, genres, cast, error }) =>
   error ? (
-    <Oops />
+    <div className="movie">
+      <Oops />
+    </div>
   ) : (
     <div className="movie">
+      <Head>
+        <title>{title} | Movies PWA</title>
+      </Head>
       <div className="card">
         <div className="card-header">
           <div className="card-title h3 text-primary">{title}</div>
@@ -22,7 +29,7 @@ const Movie = ({ title, poster_path, rating, overview, genres, cast, error }) =>
           </div>
         </div>
         <div className="card-image">
-          <img src={getImageSrc(poster_path, 500)} alt={`Poster for ${title}`} className="img-responsive" />
+          <Image src={getImageSrc(poster_path, 500)} alt={`Poster for ${title}`} className="img-responsive" />
         </div>
         <div className="card-body">
           <div className="card-title h4">Overview</div>
@@ -33,7 +40,7 @@ const Movie = ({ title, poster_path, rating, overview, genres, cast, error }) =>
               ({ credit_id, profile_path, name }) =>
                 profile_path ? (
                   <figure key={credit_id} className="avatar avatar-xl tooltip" data-tooltip={name}>
-                    <img src={getImageSrc(profile_path, 92)} alt={name} />
+                    <Image src={getImageSrc(profile_path, 92)} alt={name} />
                   </figure>
                 ) : null
             )}

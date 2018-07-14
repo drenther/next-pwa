@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
 
+import Image from './Image';
+
 import { getImageSrc } from '../utils/apiCalls';
 
 class Movie extends Component {
@@ -15,7 +17,7 @@ class Movie extends Component {
       <Link as={`/movie/${id}`} href={`/movie?id=${id}`}>
         <div className="card" id={`movie-${id}`} onMouseEnter={this.prefetchMoviePage}>
           <div className="card-image">
-            <img src={getImageSrc(poster_path, 342)} className="img-responsive" />
+            <Image src={getImageSrc(poster_path, 342)} alt={`Poster for ${title}`} className="img-responsive" />
           </div>
           <div className="card-header">
             <div className="card-title h5 text-primary text-ellipsis">{title}</div>

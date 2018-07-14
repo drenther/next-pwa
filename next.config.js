@@ -35,6 +35,13 @@ module.exports = withCSS({
           },
         },
         {
+          urlPattern: /[^3]\/movie\//,
+          handler: 'networkFirst',
+          options: {
+            cacheName: 'html-cache',
+          },
+        },
+        {
           urlPattern: new RegExp('^https://api.themoviedb.org/3/movie'),
           handler: 'staleWhileRevalidate',
           options: {
@@ -69,6 +76,7 @@ module.exports = withCSS({
           short_name: 'Next-PWA',
           description: 'A Movie browsing PWA using Next.js and Google Workbox',
           background_color: '#ffffff',
+          theme_color: '#5755d9',
           display: 'standalone',
           orientation: 'portrait',
           fingerprints: false,
