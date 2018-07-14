@@ -11,7 +11,7 @@ module.exports = withCSS({
     };
 
     if (!isServer) {
-      config.module.rules[config.module.rules.length - 1].use.push({
+      config.module.rules.find(({ test }) => test.test('style.css')).use.push({
         loader: 'css-purify-webpack-loader',
         options: {
           includes: ['./pages/*.js', './components/*.js'],

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
+import NextHead from 'next/head';
 
-import Head from './Head';
 import Nav from './Nav';
 
 class Header extends Component {
@@ -22,8 +22,17 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
+        <NextHead>
+          <meta charSet="UTF-8" />
+          <title>Movies PWA</title>
+          <meta name="description" content="An example PWA" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#302ecd" />
+          <link rel="manifest" href="/_next/static/manifest.json" />
+          <link rel="icon" href="/static/favicon.ico" />
+          <link rel="stylesheet" href="/_next/static/style.css" />
+        </NextHead>
         <Loader loading={this.state.loading} />
-        <Head title="Movies" />
         <Nav />
       </div>
     );

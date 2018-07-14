@@ -21,4 +21,5 @@ yarn-error.log*
 # workbox
 workbox
 
+# config
 config.js
