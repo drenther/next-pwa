@@ -47,7 +47,7 @@ const Movie = ({ title, poster_path, rating, overview, genres, cast, error }) =>
           </div>
         </div>
         <div className="card-footer btn-group btn-group-block">
-          <Link prefetch href="/">
+          <Link href="/">
             <button className="btn btn-primary">Back to Home</button>
           </Link>
         </div>
