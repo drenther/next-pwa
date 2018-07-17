@@ -18,6 +18,8 @@ This is a Progressive Web App built with React. Main features include -
 
 - Also used Spectre.css for styling (don't worry about size unused CSS selectors are trimmed away remember)
 
+- Used react-progressive-image for better image loading setup
+
 Read this series of articles where I go through the whole thing -
 Building a Progressive Web App with Next.js - [Part I](https://able.bio/drenther/building-a-progressive-web-app-with-nextjs-part-i--00edasw) and [Part II](https://able.bio/drenther/building-a-progressive-web-app-with-nextjs-part-ii--98ojk46)
 
